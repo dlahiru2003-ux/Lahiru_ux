@@ -140,14 +140,14 @@ export const initialProjects: Project[] = [
     id: 6, 
     type: 'link', 
     title: 'Flyer Design',
-    desc: 'Professional photography for birthdays and special celebrations, focusing on authentic emotions and live event highlights.',
+    desc: 'specialize in creating eye-catching, modern, and high-impact flyer designs tailored specifically for your business, event, or brand.',
     url: 'https://www.facebook.com/share/p/18W2t7rGr2/',
-    imgUrl: '/images/DL (1).jpg',
+    imgUrl: '/images/FL (9).jpg',
     images: [
-      '/images/DL (1).jpg','/images/DL (2).jpg','/images/DL (3).jpg',
-      '/images/DL (4).jpg','/images/DL (5).jpg','/images/DL (6).jpg',
-      '/images/DL (7).jpg'
+      '/images/FL (1).jpg','/images/FL (2).jpg','/images/FL (3).jpg','/images/FL (4).jpg',
+      '/images/FL (5).jpg','/images/FL (6).jpg','/images/FL (7).jpg','/images/FL (8).jpg',
+      '/images/FL (9).jpg','/images/FL (10).jpg'
     ],
-    tags: ['Musical', 'Live', 'special'],
+    tags: ['Classes', 'Hotels', 'Marketing'],
   },
 ]

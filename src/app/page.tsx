@@ -289,49 +289,58 @@ export default function Portfolio() {
       </section>
 
       <section id="projects" className="section-wrap">
-        <div className="projects-header fade-in">
-          <div>
-            <div className="section-label">// portfolio</div>
-            <h2 className="section-title" style={{marginBottom:0}}>Selected Projects</h2>
+  <div className="projects-header fade-in">
+    <div>
+      <div className="section-label">// portfolio</div>
+      <h2 className="section-title" style={{ marginBottom: 0 }}>Selected Projects</h2>
+    </div>
+    {/* මෙතන button එක වෙනුවට CV එක open වෙන Link එකක් හැදුවා */}
+    <a 
+      href="/docs/mycv.pdf" 
+      target="_blank" 
+      rel="noreferrer" 
+      className="add-project-btn"
+      style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+    >
+      View CV
+    </a>
+  </div>
+  
+  <div className="projects-grid fade-in">
+    {projects.length === 0 ? (
+      <div className="empty-state">
+        <h3>No projects yet</h3>
+        <p>Your workspace is ready. Check back soon for updates!</p>
+      </div>
+    ) : projects.map((p) => (
+      <div className="project-card" key={p.id} onClick={() => { setViewProject(p); setViewOpen(true) }}>
+        <div className="project-thumb">
+          {p.type === 'link' && p.imgUrl
+            ? <img src={p.imgUrl} alt={p.title} loading="lazy"/>
+            : p.images?.length
+            ? <img src={p.images[0]} alt={p.title} loading="lazy"/>
+            : <div className="project-thumb-placeholder">{p.title[0]}</div>
+          }
+          <span className={`project-type-badge ${p.type === 'link' ? 'badge-link' : 'badge-gallery'}`}>
+            {p.type.toUpperCase()}
+          </span>
+        </div>
+        <div className="project-info">
+          <div className="project-title">{p.title}</div>
+          <div className="project-desc">{p.desc}</div>
+          <div className="project-footer">
+            <div className="project-count">
+              {p.images && p.images.length > 0 ? `${p.images.length} images` : `${p.tags?.length || 0} technologies`}
+            </div>
+            <div className="project-action">
+              {p.type === 'link' ? 'Open site →' : 'View gallery →'}
+            </div>
           </div>
-          <button className="add-project-btn" onClick={() => setAddOpen(true)}>+ Add Project</button>
         </div>
-        <div className="projects-grid fade-in">
-          {projects.length === 0 ? (
-            <div className="empty-state">
-              <h3>No projects yet</h3>
-              <p>Click "Add Project" to showcase your work</p>
-              <button className="btn btn-primary" onClick={() => setAddOpen(true)}>+ Add Your First Project</button>
-            </div>
-          ) : projects.map((p) => (
-            <div className="project-card" key={p.id} onClick={() => { setViewProject(p); setViewOpen(true) }}>
-              <div className="project-thumb">
-                {p.type === 'link' && p.imgUrl
-                  ? <img src={p.imgUrl} alt={p.title} loading="lazy"/>
-                  : p.images?.length
-                  ? <img src={p.images[0]} alt={p.title} loading="lazy"/>
-                  : <div className="project-thumb-placeholder">{p.title[0]}</div>
-                }
-                <span className={`project-type-badge ${p.type === 'link' ? 'badge-link' : 'badge-gallery'}`}>
-                  {p.type.toUpperCase()}
-                </span>
-              </div>
-              <div className="project-info">
-                <div className="project-title">{p.title}</div>
-                <div className="project-desc">{p.desc}</div>
-                <div className="project-footer">
-                  <div className="project-count">
-                    {p.images && p.images.length > 0 ? `${p.images.length} images` : `${p.tags?.length || 0} technologies`}
-                  </div>
-                  <div className="project-action">
-                    {p.type === 'link' ? 'Open site →' : 'View gallery →'}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       <section id="contact" className="section-wrap">
         <div className="fade-in">
